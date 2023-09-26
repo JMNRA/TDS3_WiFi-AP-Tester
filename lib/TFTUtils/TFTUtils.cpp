@@ -16,7 +16,7 @@ void initDisplay()
     tft.fillScreen(TFT_BLACK);
 
     background.createSprite(320, 170);
-    infoSprite.createSprite(160, 130);
+    infoSprite.createSprite(170, 130);
     graphSprite.createSprite(100, 130);
 
 
@@ -64,7 +64,7 @@ void displayInterface()
     graphSprite.pushToSprite(&background, 10, 20, TFT_BLACK);
     porcentaje();
     graphSprite.setTextDatum(1);
-    graphSprite.drawString(String(percentage), 60, 40, 6);
+    graphSprite.drawString(String(percentage), 60, 40, 7);
 
 
     infoSprite.pushToSprite(&background, 130, 20, TFT_BLACK);

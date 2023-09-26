@@ -5,17 +5,9 @@
 #include <TFT_eSPI.h>
 #include <TFTUtils.cpp>
 
-ulong current_time, prev_time;
-ulong current_time2, prev_time2;
-
-uint16_t dt_ms = 2000;
-uint32_t bt_ms = 240000;
-
-int brightness = 240;
-
-
 void setup()
 {
+    // Activar el uso de bateria
     pinMode(15, OUTPUT);
     digitalWrite(15, 1);
 
