@@ -5,25 +5,7 @@
 #include <TFT_eSPI.h>
 #include <TFTUtils.cpp>
 
-void reconectar (){
-    int counter = 0;
 
-    if (WiFi.status() != WL_CONNECTED)
-    {
-        background.fillSprite(TFT_BLACK);
-        background.drawRoundRect(20, 60, 280, 60, 10, TFT_WHITE);
-        background.setTextDatum(3);
-        background.drawString(String("RECONECTANDO EN ...") + counter, 20, 90, 3);
-        counter++;
-
-        if (counter > 10)
-        {
-        delay(2000);
-        ESP.restart();
-        }
-
-    }
-}
 
 void setup()
 {
@@ -35,11 +17,12 @@ void setup()
     pinMode(14, INPUT_PULLUP);
 
     Serial.begin(115200);
+    initDisplay();
+
     ConnectWiFi_STA();
     
     
 
-    initDisplay();
     displayBattery();
     
     prev_time = millis();
@@ -61,6 +44,21 @@ void loop()
         prev_time = current_time;
         
         drawInterface();
+        int counter = 0;
+
+        if (WiFi.status() != WL_CONNECTED)
+        {
+            counter++;
+            desconectado = true;
+
+            if (counter > 10)
+            {
+            delay(2000);
+            ESP.restart();
+            }
+
+    }
+
 
 
     }
@@ -73,7 +71,6 @@ void loop()
 
     }
     
-
     // if (digitalRead(14) == 0 && brightness < 240)
     //{
     //    brightness++;

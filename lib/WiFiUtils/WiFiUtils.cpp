@@ -11,6 +11,13 @@ void ConnectWiFi_STA(bool useStaticIP = false)
     if (useStaticIP){
         WiFi.config(ip, gateway, subnet);
     }
+    while (WiFi.status() != WL_CONNECTED) 
+   { 
+     delay(100);  
+     Serial.print('.'); 
+   }
+    desconectado = false;
+    delay(1000);
     Serial.println("");
     Serial.print("Iniciado STA:\t");
     Serial.println(ssid);

@@ -41,23 +41,7 @@ void porcentaje (){
 
 
 void drawInterface()
-{
-    if (WiFi.status() != WL_CONNECTED)
-    {
-        background.fillSprite(TFT_BLACK);
-        background.drawRoundRect(20, 60, 280, 60, 10, TFT_WHITE);  
-        
-        reco.fillSprite(TFT_BLACK);
-        reco.setTextDatum(3);
-
-        reco.drawString("RECONECTANDO ... ", 10, 30, 2);
-        reco.pushToSprite(&background, 20, 60, TFT_BLACK);
-
-        background.pushSprite(0, 0);
-
-        
-    }else
-    {
+{   
         local_ip = WiFi.localIP().toString();
         uint8_t* mac=WiFi.BSSID();
         char APmac[13];
@@ -78,6 +62,14 @@ void drawInterface()
         infoSprite.drawString(String("SSID: ") + ssid, 20, 20, 1);
         infoSprite.drawString(String("MAC: ")+ APmac, 20, 40, 1);
         infoSprite.drawString(String("IP: ") + local_ip, 20, 60, 1);
+        if (desconectado = true)
+        {
+        infoSprite.drawString(String("Desconectado") , 20, 80, 1);
+            /* code */
+        }
+        
+        infoSprite.drawString(String("Connectado") , 20, 80, 1);
+
         infoSprite.drawString(String("BATERIA: ") + bat_percentage + " %", 20, 100, 1);
 
 
@@ -100,7 +92,7 @@ void drawInterface()
         graphSprite.pushToSprite(&background, 10, 20, TFT_BLACK);
 
         background.pushSprite(0, 0);
-    }
+    
     
    
    
