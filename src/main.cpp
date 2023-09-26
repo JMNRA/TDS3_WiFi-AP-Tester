@@ -5,6 +5,26 @@
 #include <TFT_eSPI.h>
 #include <TFTUtils.cpp>
 
+void reconectar (){
+    int counter = 0;
+
+    if (WiFi.status() != WL_CONNECTED)
+    {
+        background.fillSprite(TFT_BLACK);
+        background.drawRoundRect(20, 60, 280, 60, 10, TFT_WHITE);
+        background.setTextDatum(3);
+        background.drawString(String("RECONECTANDO EN ...") + counter, 20, 90, 3);
+        counter++;
+
+        if (counter > 10)
+        {
+        delay(2000);
+        ESP.restart();
+        }
+
+    }
+}
+
 void setup()
 {
     // Activar el uso de bateria
@@ -40,7 +60,7 @@ void loop()
     {
         prev_time = current_time;
         
-        displayInterface();
+        drawInterface();
 
 
     }
@@ -52,7 +72,7 @@ void loop()
 
 
     }
-    reconectar();
+    
 
     // if (digitalRead(14) == 0 && brightness < 240)
     //{
@@ -74,3 +94,4 @@ void loop()
 
     
 }
+
