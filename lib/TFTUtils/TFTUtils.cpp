@@ -68,7 +68,11 @@ void drawInterface()
             /* code */
         }
         
+<<<<<<< HEAD
         infoSprite.drawString(String("Connectado") , 20, 80, 1);
+=======
+        infoSprite.drawString(String("Conectado") , 20, 80, 1);
+>>>>>>> 311f551 (Desconexion arreglado)
 
         infoSprite.drawString(String("BATERIA: ") + bat_percentage + " %", 20, 100, 1);
 

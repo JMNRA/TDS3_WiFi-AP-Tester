@@ -5,6 +5,10 @@
 #include <TFT_eSPI.h>
 #include <TFTUtils.cpp>
 
+<<<<<<< HEAD
+=======
+int counter = 0;
+>>>>>>> 311f551 (Desconexion arreglado)
 
 
 void setup()
@@ -44,7 +48,10 @@ void loop()
         prev_time = current_time;
         
         drawInterface();
+<<<<<<< HEAD
         int counter = 0;
+=======
+>>>>>>> 311f551 (Desconexion arreglado)
 
         if (WiFi.status() != WL_CONNECTED)
         {
@@ -55,6 +62,11 @@ void loop()
             {
             delay(2000);
             ESP.restart();
+<<<<<<< HEAD
+=======
+            counter = 0;
+
+>>>>>>> 311f551 (Desconexion arreglado)
             }
 
     }
